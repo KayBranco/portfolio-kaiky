@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kaiky Lucas - Portfólio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#skills">Tecnologias</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#certificados">Certificados</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <button id="toggle-theme"><i class="bi"></i></button>
+
+  <header>
+    <img src="img/perfil.jpg" alt="Foto de Kaiky Lucas" class="foto-perfil" />
+    <h1>Kaiky Lucas</h1>
+    <p>Front-End • QA • Power BI • Estudante de Engenharia da Computação</p>
+  </header>
+
+  <section id="sobre" class="sobre">
+    <h2>Sobre mim</h2>
+    <p>
+      Sou estudante de Engenharia da Computação com paixão por tecnologia, desenvolvimento web e análise de dados.
+      Tenho experiência com testes manuais e automatizados, criação de dashboards no Power BI e projetos web interativos.
+    </p>
+  </section>
+
+  <section id="skills" class="skills">
+    <h2>Tecnologias e Conhecimentos</h2>
+    <div class="grid-icons">
+      <div class="tech-card"><img src="img/html.png" alt="HTML" /></div>
+      <div class="tech-card"><img src="img/css.png" alt="CSS" /></div>
+      <div class="tech-card"><img src="img/javascript.png" alt="JavaScript" /></div>
+      <div class="tech-card"><img src="img/react.png" alt="React" /></div>
+      <div class="tech-card"><img src="img/node.png" alt="Node.js" /></div>
+      <div class="tech-card"><img src="img/cypress.png" alt="Cypress" /></div>
+      <div class="tech-card"><img src="img/powerbi.png" alt="Power BI" /></div>
+      <div class="tech-card"><img src="img/git.png" alt="Git" /></div>
+    </div>
+  </section>
+
+  <section id="projetos" class="projetos">
+    <h2>Projetos Pessoais</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Studio CardioX</h3>
+        <p>Site interativo para estúdio de treino personalizado.</p>
+        <a href="https://github.com/kaybranco" target="_blank">Ver projeto</a>
+      </div>
+      <div class="card">
+        <h3>Calculadora Numérica</h3>
+        <p>App com métodos matemáticos em JavaScript.</p>
+        <a href="https://github.com/kaybranco" target="_blank">Ver projeto</a>
+      </div>
+    </div>
+  </section>
+
+<section id="certificados" class="certificados">
+  <h2>Certificados de Cursos</h2>
+  <div class="carrossel-certificados">
+    <button class="carrossel-btn left" onclick="mudarSlide(-1)">&#10094;</button>
+
+    <div class="certificado-slide ativo">
+      <img src="certificados/certificado-gestao-ti.jpg" alt="Gestão de Projetos de TI" />
+      <p>Gestão de Projetos de TI – Governo de SP</p>
+    </div>
+
+    <div class="certificado-slide">
+      <img src="certificados/certificado-teste-software.jpg" alt="Teste de Software Manual" />
+      <p>Teste de Software Manual – Udemy</p>
+    </div>
+
+    <!-- Adicione mais certificados aqui -->
+
+    <button class="carrossel-btn right" onclick="mudarSlide(1)">&#10095;</button>
+  </div>
+</section>
+  <footer id="contato">
+    <h2>Fale comigo</h2>
+    <form action="https://formsubmit.co/kaikylucas65@gmail.com" method="POST" class="formulario">
+      <input type="text" name="name" placeholder="Seu nome" required />
+      <input type="email" name="email" placeholder="Seu e-mail" required />
+      <input type="hidden" name="_subject" value="Nova mensagem do portfólio!" />
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_template" value="box" />
+      <textarea name="message" rows="5" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <div class="contatos">
+      <a href="https://www.linkedin.com/in/kaiky-lucas-471793227" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="mailto:kaikylucas65@gmail.com"><i class="bi bi-envelope"></i></a>
+      <a href="https://wa.me/5512991166617" target="_blank"><i class="bi bi-whatsapp"></i></a>
+      <a href="https://github.com/kaybranco" target="_blank"><i class="bi bi-github"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggle-theme');
+    const icon = toggleBtn.querySelector('i');
+
+    // Detecta preferência do sistema
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Carrega tema salvo ou aplica o do sistema
+    const savedTheme = localStorage.getItem('theme');
+    const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    if (isDark) {
+      document.body.classList.add('dark');
+      icon.className = 'bi bi-sun-fill';
+    } else {
+      icon.className = 'bi bi-moon-stars-fill';
+    }
+
+    // Alterna tema e salva
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDarkNow = document.body.classList.contains('dark');
+      icon.className = isDarkNow ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+      localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+    });
+  </script>
+  <script>
+  let slideAtual = 0;
+  const slides = document.querySelectorAll('.certificado-slide');
+
+  function mostrarSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('ativo', i === index);
+    });
+  }
+
+  function mudarSlide(direcao) {
+    slideAtual += direcao;
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    if (slideAtual >= slides.length) slideAtual = 0;
+    mostrarSlide(slideAtual);
+  }
+
+  // Inicializa com o primeiro slide
+  mostrarSlide(slideAtual);
+</script>
+
+</body>
+</html>
