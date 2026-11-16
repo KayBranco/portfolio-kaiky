@@ -1,154 +1,385 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kaiky Lucas - Portfólio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+  <meta name="description" content="Kaiky Lucas · Front-End, QA e Power BI. Estudante de Engenharia da Computação.">
+  <meta name="theme-color" content="#0b0d12">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Aplica o tema salvo antes de renderizar (evita "piscar") -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
 <body>
 
-  <nav class="navbar">
-    <ul>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#skills">Tecnologias</a></li>
-      <li><a href="#projetos">Projetos</a></li>
-      <li><a href="#certificados">Certificados</a></li>
-      <li><a href="#contato">Contato</a></li>
-      <li><button id="toggle-theme"><i class="bi"></i></button></li>
-    </ul>
-  </nav>
+  <!-- ============ NAVEGAÇÃO ============ -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="#inicio" class="nav__logo">Kaiky<span>.</span></a>
 
+      <nav class="nav__links" id="menu" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#skills">Tecnologias</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#certificados">Certificados</a>
+        <a href="#contato">Contato</a>
+      </nav>
 
-  <header>
-    <img src="img/perfil.jpg" alt="Foto de Kaiky Lucas" class="foto-perfil" />
-    <h1>Kaiky Lucas</h1>
-    <p>Front-End • QA • Power BI • Estudante de Engenharia da Computação</p>
+      <div class="nav__actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="icon-btn nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <section id="sobre" class="sobre">
-    <h2>Sobre mim</h2>
-    <p>
-      Sou estudante de Engenharia da Computação com paixão por tecnologia, desenvolvimento web e análise de dados.
-      Tenho experiência com testes manuais e automatizados, criação de dashboards no Power BI e projetos web interativos.
-    </p>
-  </section>
+  <main>
 
-  <section id="skills" class="skills">
-    <h2>Tecnologias e Conhecimentos</h2>
-    <div class="grid-icons">
-      <div class="tech-card"><img src="img/html.png" alt="HTML" /></div>
-      <div class="tech-card"><img src="img/css.png" alt="CSS" /></div>
-      <div class="tech-card"><img src="img/javascript.png" alt="JavaScript" /></div>
-      <div class="tech-card"><img src="img/react.png" alt="React" /></div>
-      <div class="tech-card"><img src="img/node.png" alt="Node.js" /></div>
-      <div class="tech-card"><img src="img/cypress.png" alt="Cypress" /></div>
-      <div class="tech-card"><img src="img/powerbi.png" alt="Power BI" /></div>
-      <div class="tech-card"><img src="img/git.png" alt="Git" /></div>
-    </div>
-  </section>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero__glow hero__glow--a"></div>
+      <div class="hero__glow hero__glow--b"></div>
 
-  <section id="projetos" class="projetos">
-    <h2>Projetos Pessoais</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Studio CardioX</h3>
-        <p>Site interativo para estúdio de treino personalizado.</p>
-        <a href="https://github.com/kaybranco" target="_blank">Ver projeto</a>
+      <div class="container hero__inner">
+        <div class="hero__text reveal">
+          <p class="eyebrow"><span class="dot"></span> Olá, eu sou</p>
+          <h1>Kaiky <span class="gradient-text">Lucas</span></h1>
+          <p class="hero__roles">Front-End • QA • Power BI</p>
+          <p class="hero__sub">Estudante de Engenharia da Computação</p>
+
+          <div class="hero__cta">
+            <a href="#projetos" class="btn btn--primary">Ver projetos</a>
+            <a href="#contato" class="btn btn--ghost">Fale comigo</a>
+          </div>
+        </div>
+
+        <div class="hero__photo reveal">
+          <div class="photo-frame">
+            <img src="img/perfil.jpg" alt="Foto de Kaiky Lucas">
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Calculadora Numérica</h3>
-        <p>App com métodos matemáticos em JavaScript.</p>
-        <a href="https://github.com/kaybranco" target="_blank">Ver projeto</a>
+    </section>
+
+    <!-- ============ SOBRE ============ -->
+    <section id="sobre" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">Sobre</span>
+          <h2>Sobre mim</h2>
+        </header>
+
+        <div class="about reveal">
+          <p class="about__text">
+            Sou estudante de Engenharia da Computação com paixão por tecnologia,
+            desenvolvimento web e análise de dados. Tenho experiência com testes
+            manuais e automatizados, criação de dashboards no Power BI e projetos
+            web interativos.
+          </p>
+
+          <ul class="about__cards">
+            <li class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
+              </span>
+              <h3>Desenvolvimento Web</h3>
+              <p>Projetos web interativos com HTML, CSS, JavaScript e React.</p>
+            </li>
+            <li class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </span>
+              <h3>QA e Testes</h3>
+              <p>Testes manuais e automatizados, incluindo Cypress.</p>
+            </li>
+            <li class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+              </span>
+              <h3>Análise de Dados</h3>
+              <p>Criação de dashboards no Power BI.</p>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-<section id="certificados" class="certificados">
-  <h2>Certificados de Cursos</h2>
-  <div class="carrossel-certificados">
-    <button class="carrossel-btn left" onclick="mudarSlide(-1)">&#10094;</button>
+    <!-- ============ TECNOLOGIAS ============ -->
+    <section id="skills" class="section section--alt">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">Skills</span>
+          <h2>Tecnologias e Conhecimentos</h2>
+        </header>
 
-    <div class="certificado-slide ativo">
-      <img src="certificados/certificado-gestao-ti.jpg" alt="Gestão de Projetos de TI" />
-      <p>Gestão de Projetos de TI – Governo de SP</p>
-    </div>
+        <ul class="skills reveal">
+          <li class="skill"><img src="img/html.png" alt="HTML"><span>HTML</span></li>
+          <li class="skill"><img src="img/css.png" alt="CSS"><span>CSS</span></li>
+          <li class="skill"><img src="img/javascript.png" alt="JavaScript"><span>JavaScript</span></li>
+          <li class="skill"><img src="img/react.png" alt="React"><span>React</span></li>
+          <li class="skill"><img src="img/node.png" alt="Node.js"><span>Node.js</span></li>
+          <li class="skill"><img src="img/cypress.png" alt="Cypress"><span>Cypress</span></li>
+          <li class="skill"><img src="img/powerbi.png" alt="Power BI"><span>Power BI</span></li>
+          <li class="skill"><img src="img/git.png" alt="Git"><span>Git</span></li>
+        </ul>
+      </div>
+    </section>
 
-    <div class="certificado-slide">
-      <img src="certificados/certificado-teste-software.jpg" alt="Teste de Software Manual" />
-      <p>Teste de Software Manual – Udemy</p>
-    </div>
+    <!-- ============ PROJETOS ============ -->
+    <section id="projetos" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">Portfólio</span>
+          <h2>Projetos Pessoais</h2>
+        </header>
 
-    <!-- Adicione mais certificados aqui -->
+        <div class="projects">
 
-    <button class="carrossel-btn right" onclick="mudarSlide(1)">&#10095;</button>
-  </div>
-</section>
-  <footer id="contato">
-    <h2>Fale comigo</h2>
-    <form action="https://formsubmit.co/kaikylucas65@gmail.com" method="POST" class="formulario">
-      <input type="text" name="name" placeholder="Seu nome" required />
-      <input type="email" name="email" placeholder="Seu e-mail" required />
-      <input type="hidden" name="_subject" value="Nova mensagem do portfólio!" />
-    <input type="hidden" name="_captcha" value="false" />
-    <input type="hidden" name="_template" value="box" />
-      <textarea name="message" rows="5" placeholder="Sua mensagem" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-    <div class="contatos">
-      <a href="https://www.linkedin.com/in/kaiky-lucas-471793227" target="_blank"><i class="bi bi-linkedin"></i></a>
-      <a href="mailto:kaikylucas65@gmail.com"><i class="bi bi-envelope"></i></a>
-      <a href="https://wa.me/5512991166617" target="_blank"><i class="bi bi-whatsapp"></i></a>
-      <a href="https://github.com/kaybranco" target="_blank"><i class="bi bi-github"></i></a>
+          <!-- Projeto 1: Open Door -->
+          <article class="project reveal">
+            <div class="project__top">
+              <span class="project__num">01</span>
+              <a class="project__arrow" href="https://github.com/kaybranco" target="_blank" rel="noopener" aria-label="Abrir Open Door no GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+            <h3>Open Door</h3>
+            <!-- EDITE: troque pela descrição real do Open Door -->
+            <p>Projeto pessoal em destaque. Veja o código e os detalhes no GitHub.</p>
+            <!-- EDITE: troque o link pelo repositório do Open Door -->
+            <a class="link" href="https://github.com/kaybranco" target="_blank" rel="noopener">Ver projeto →</a>
+          </article>
+
+          <!-- Projeto 2: Calculadora Numérica -->
+          <article class="project reveal">
+            <div class="project__top">
+              <span class="project__num">02</span>
+              <a class="project__arrow" href="https://github.com/kaybranco" target="_blank" rel="noopener" aria-label="Abrir Calculadora Numérica no GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+            <h3>Calculadora Numérica</h3>
+            <p>App com métodos matemáticos em JavaScript.</p>
+            <ul class="tags"><li>JavaScript</li></ul>
+            <!-- EDITE: troque o link pelo repositório da calculadora -->
+            <a class="link" href="https://github.com/kaybranco" target="_blank" rel="noopener">Ver projeto →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICADOS ============ -->
+    <section id="certificados" class="section section--alt">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">Formação</span>
+          <h2>Certificados de Cursos</h2>
+        </header>
+
+        <div class="certs reveal">
+
+          <figure class="cert">
+            <button class="cert__img" type="button" data-full="certificados/certificado-gestao-ti.jpg" aria-label="Ampliar certificado de Gestão de Projetos de TI">
+              <img src="certificados/certificado-gestao-ti.jpg" alt="Certificado de Gestão de Projetos de TI" loading="lazy">
+            </button>
+            <figcaption>
+              <strong>Gestão de Projetos de TI</strong>
+              <span>Governo de SP</span>
+            </figcaption>
+          </figure>
+
+          <figure class="cert">
+            <button class="cert__img" type="button" data-full="certificados/certificado-teste-software.jpg" aria-label="Ampliar certificado de Teste de Software Manual">
+              <img src="certificados/certificado-teste-software.jpg" alt="Certificado de Teste de Software Manual" loading="lazy">
+            </button>
+            <figcaption>
+              <strong>Teste de Software Manual</strong>
+              <span>Udemy</span>
+            </figcaption>
+          </figure>
+
+          <!--
+            PARA ADICIONAR UM CERTIFICADO NOVO: copie um bloco <figure class="cert"> inteiro,
+            cole aqui embaixo e troque o caminho da imagem, o título e a instituição.
+          -->
+
+          <div class="cert cert--soon">
+            <span>Mais certificados<br>em breve</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section id="contato" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__tag">Contato</span>
+          <h2>Fale comigo</h2>
+        </header>
+
+        <div class="contact reveal">
+          <form class="form" id="contactForm" novalidate>
+            <label>
+              <span>Nome</span>
+              <input type="text" name="nome" placeholder="Seu nome" required>
+            </label>
+            <label>
+              <span>E-mail</span>
+              <input type="email" name="email" placeholder="seu@email.com" required>
+            </label>
+            <label>
+              <span>Mensagem</span>
+              <textarea name="mensagem" rows="5" placeholder="Como posso ajudar?" required></textarea>
+            </label>
+            <button type="submit" class="btn btn--primary">Enviar</button>
+          </form>
+
+          <ul class="links">
+            <li>
+              <a href="https://www.linkedin.com/in/kaiky-lucas-471793227" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <div><strong>LinkedIn</strong><span>kaiky-lucas</span></div>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:kaikylucas65@gmail.com">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 6 10-6"/></svg>
+                <div><strong>E-mail</strong><span>kaikylucas65@gmail.com</span></div>
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/5512991166617" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <div><strong>WhatsApp</strong><span>(12) 99116-6617</span></div>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/kaybranco" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                <div><strong>GitHub</strong><span>@kaybranco</span></div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Kaiky Lucas. Todos os direitos reservados.</p>
+      <a href="#inicio">Voltar ao topo ↑</a>
     </div>
   </footer>
 
+  <!-- Lightbox dos certificados -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" id="lightboxClose" aria-label="Fechar">×</button>
+    <img src="" alt="Certificado ampliado" id="lightboxImg">
+  </div>
+
   <script>
-    const toggleBtn = document.getElementById('toggle-theme');
-    const icon = toggleBtn.querySelector('i');
+    // ---------- Ano no rodapé ----------
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Detecta preferência do sistema
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // ---------- Tema claro/escuro ----------
+    var root = document.documentElement;
+    document.getElementById('themeToggle').addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
 
-    // Carrega tema salvo ou aplica o do sistema
-    const savedTheme = localStorage.getItem('theme');
-    const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-    if (isDark) {
-      document.body.classList.add('dark');
-      icon.className = 'bi bi-sun-fill';
+    // ---------- Menu mobile ----------
+    var burger = document.getElementById('burger');
+    var menu = document.getElementById('menu');
+    function closeMenu() {
+      menu.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+    burger.addEventListener('click', function () {
+      var open = menu.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+
+    // ---------- Animação ao rolar ----------
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(function (el) { io.observe(el); });
     } else {
-      icon.className = 'bi bi-moon-stars-fill';
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
     }
 
-    // Alterna tema e salva
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const isDarkNow = document.body.classList.contains('dark');
-      icon.className = isDarkNow ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
-      localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+    // ---------- Link ativo no menu ----------
+    var sections = document.querySelectorAll('main section[id]');
+    var links = document.querySelectorAll('.nav__links a');
+    if ('IntersectionObserver' in window) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            links.forEach(function (l) {
+              l.classList.toggle('is-active', l.getAttribute('href') === '#' + e.target.id);
+            });
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      sections.forEach(function (s) { spy.observe(s); });
+    }
+
+    // ---------- Lightbox ----------
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightboxImg');
+    function closeLb() { lb.hidden = true; lbImg.src = ''; document.body.style.overflow = ''; }
+    document.querySelectorAll('.cert__img').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        lbImg.src = btn.dataset.full;
+        lb.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    lb.addEventListener('click', function (e) { if (e.target !== lbImg) closeLb(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+
+    // ---------- Formulário (abre o app de e-mail) ----------
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = e.target;
+      if (!f.checkValidity()) { f.reportValidity(); return; }
+      var nome = f.nome.value.trim();
+      var email = f.email.value.trim();
+      var msg = f.mensagem.value.trim();
+      var subject = encodeURIComponent('Contato pelo portfólio - ' + nome);
+      var body = encodeURIComponent(msg + '\n\n— ' + nome + ' (' + email + ')');
+      window.location.href = 'mailto:kaikylucas65@gmail.com?subject=' + subject + '&body=' + body;
     });
   </script>
-  <script>
-  let slideAtual = 0;
-  const slides = document.querySelectorAll('.certificado-slide');
-
-  function mostrarSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('ativo', i === index);
-    });
-  }
-
-  function mudarSlide(direcao) {
-    slideAtual += direcao;
-    if (slideAtual < 0) slideAtual = slides.length - 1;
-    if (slideAtual >= slides.length) slideAtual = 0;
-    mostrarSlide(slideAtual);
-  }
-
-  // Inicializa com o primeiro slide
-  mostrarSlide(slideAtual);
-</script>
-
 </body>
 </html>
